@@ -1,13 +1,14 @@
 // SPDX-License-Identifier: (GPL-2.0 OR MIT)
 /* MT6789 usb blocks - split out of the soc node by tools/scripts/dts-socsplit.py */
 
-&soc {
+/ {
 	extcon_usb: extcon_usb {
 		compatible = "mediatek,extcon-usb";
-		vbus-supply = <&eta6965_otg_vbus>;
+		status = "okay";
+		vbus-supply = <&mt6375_otg_vbus>;
 		vbus-voltage;
 		vbus-current;
-		charger = <&eta6965_chg>;
+		charger = <&mt6375_chg>;
 		tcpc = "type_c_port0";
 		mediatek,bypss-typec-sink = <1>;
 		mediatek,u2;
@@ -19,6 +20,9 @@
 			};
 		};
 	};
+};
+
+&soc {
 
 	usb: usb0@11200000 {
 		compatible = "mediatek,mt6789-usb20";

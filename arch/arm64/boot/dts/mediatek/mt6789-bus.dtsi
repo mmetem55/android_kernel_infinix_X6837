@@ -49,7 +49,7 @@
 		mediatek,pwm2-bclk-sw-ctrl-offset = <0x02>;
 		mediatek,pwm3-bclk-sw-ctrl-offset = <0x04>;
 		mediatek,pwm-version = <0x02>;
-		pwmsrcclk = <0x2b>;
+		pwmsrcclk = <&infracfg_ao_clk>;
 	};
 
 	cq_dma@10212000 {

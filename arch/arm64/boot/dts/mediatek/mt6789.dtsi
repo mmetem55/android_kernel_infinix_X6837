@@ -681,7 +681,7 @@
 		tbl-off = <0x04 0x4c 0x94>;
 		mcucfg-ver = <0x00>;
 		apmixedsys = <&cpu_pll>;
-		clk-div-base = <0x3d>;
+		clk-div-base = <&cpu_mcucfg>;
 		pll-con = <0x20c 0x21c 0x25c>;
 		clk-div = <0xa2a0 0xa2a4 0xa2e0>;
 		proc1-supply = <&mt6358_vproc11_reg>;
@@ -858,7 +858,7 @@
 			#size-cells = <2>;
 			compatible = "mediatek,cam_mem";
 			mediatek,platform = "mt6789";
-			iommus = <&disp_iommu 0x20200>;
+			iommus = <&disp_iommu 0x20120 &disp_iommu 0x20121 &disp_iommu 0x20122 &disp_iommu 0x20123 &disp_iommu 0x20124 &disp_iommu 0x20125 &disp_iommu 0x20126 &disp_iommu 0x20127 &disp_iommu 0x20128 &disp_iommu 0x20129 &disp_iommu 0x2012a &disp_iommu 0x2012b &disp_iommu 0x2012c &disp_iommu 0x2012d &disp_iommu 0x2012e &disp_iommu 0x2012f &disp_iommu 0x20130 &disp_iommu 0x20131 &disp_iommu 0x20132 &disp_iommu 0x20133 &disp_iommu 0x20134 &disp_iommu 0x20135 &disp_iommu 0x20136 &disp_iommu 0x20137 &disp_iommu 0x20138 &disp_iommu 0x20139 &disp_iommu 0x201a0 &disp_iommu 0x201a1 &disp_iommu 0x201a2 &disp_iommu 0x201a6 &disp_iommu 0x201a7 &disp_iommu 0x201a8 &disp_iommu 0x20200 &disp_iommu 0x20201 &disp_iommu 0x20202 &disp_iommu 0x20203 &disp_iommu 0x20204 &disp_iommu 0x20205 &disp_iommu 0x20206 &disp_iommu 0x20207 &disp_iommu 0x20208 &disp_iommu 0x20209 &disp_iommu 0x2020a &disp_iommu 0x2020b &disp_iommu 0x2020c &disp_iommu 0x2020d &disp_iommu 0x2020e &disp_iommu 0x2020f &disp_iommu 0x20210 &disp_iommu 0x20220 &disp_iommu 0x20221 &disp_iommu 0x20222 &disp_iommu 0x20223 &disp_iommu 0x20224 &disp_iommu 0x20225 &disp_iommu 0x20226 &disp_iommu 0x20227 &disp_iommu 0x20228 &disp_iommu 0x20229 &disp_iommu 0x2022a &disp_iommu 0x2022b &disp_iommu 0x2022c &disp_iommu 0x2022d &disp_iommu 0x2022e &disp_iommu 0x2022f &disp_iommu 0x20230>;
 		};
 	};
 

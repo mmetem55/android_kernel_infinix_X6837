@@ -351,4 +351,15 @@
 		clock-names = "MDP_TDSHP0";
 	};
 
+	mtee_svp: mtee_svp {
+		compatible = "medaitek,svp";
+
+		MTEE: MTEE {
+			compatible = "mediatek,mtk_svp_on_mtee_support";
+		};
+
+		SecureVideoPath: SecureVideoPath {
+			compatible = "mediatek,mtk_sec_video_path_support";
+		};
+	};
 };

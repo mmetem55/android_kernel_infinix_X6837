@@ -1,4 +1,8 @@
 # SPDX-License-Identifier: GPL-2.0
+DTC_FLAGS_X6837 := -@
+dtb-$(CONFIG_ARCH_MEDIATEK) += X6837.dtb
+DTC_FLAGS_X6837-overlay := -@
+dtb-$(CONFIG_ARCH_MEDIATEK) += X6837-overlay.dtbo
 DTC_FLAGS_mindone := -@
 dtb-$(CONFIG_ARCH_MEDIATEK) += mindone.dtb
 DTC_FLAGS_mindone-overlay := -@

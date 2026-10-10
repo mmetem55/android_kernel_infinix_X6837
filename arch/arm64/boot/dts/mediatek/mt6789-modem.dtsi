@@ -63,6 +63,13 @@
 		io-channel-names = "md-channel";
 	};
 
+	gpio_usage_mapping: gpio_usage_mapping {
+		compatible = "mediatek,gpio_usage_mapping";
+	};
+
+	msdc1_ins: msdc1_ins {
+	};
+
 	md1_sim1_hot_plug_eint: MD1_SIM1_HOT_PLUG_EINT {
 	};
 

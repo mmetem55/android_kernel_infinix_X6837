@@ -7,14 +7,14 @@
 		backlight {
 			label = "lcd-backlight";
 			max-brightness = <0xff>;
-			max-hw-brightness = <0xff>;
+			max-hw-brightness = <0x7ff>;
 		};
 	};
 
 	regulator_vibrator: regulator_vibrator {
 		compatible = "regulator-vibrator";
 		label = "vibrator";
-		min-volt = <0x2ab980>;
+		min-volt = <0x2dc6c0>;
 		max-volt = <0x3567e0>;
 		vib-supply = <&mt6358_vibr_reg>;
 	};
@@ -34,8 +34,67 @@
 		compatible = "mediatek,goodix-fp";
 	};
 
+};
+
+/ {
 	odm: odm {
 		compatible = "simple-bus";
-	};
 
+		rt5133_eint: rt5133_eint {
+		};
+
+		rt5133_gpio1: rt5133-gpio1 {
+			compatible = "regulator-fixed";
+			regulator-name = "rt5133-gpio1";
+			regulator-min-microvolt = <0x1b7740>;
+			regulator-max-microvolt = <0x1b7740>;
+			vin-supply = <&rt5133_ldo1>;
+			enable-active-high;
+			gpio = <&rt5133 0x00 0x00>;
+		};
+
+		rt5133_gpio2: rt5133-gpio2 {
+			compatible = "regulator-fixed";
+			regulator-name = "rt5133-gpio2";
+			regulator-min-microvolt = <0x1b7740>;
+			regulator-max-microvolt = <0x1b7740>;
+			vin-supply = <&rt5133_ldo1>;
+			enable-active-high;
+			gpio = <&rt5133 0x01 0x00>;
+		};
+
+		rt5133_gpio3: rt5133-gpio3 {
+			compatible = "regulator-fixed";
+			regulator-name = "rt5133-gpio3";
+			regulator-min-microvolt = <0x1b7740>;
+			regulator-max-microvolt = <0x1b7740>;
+			vin-supply = <&rt5133_ldo1>;
+			enable-active-high;
+			gpio = <&rt5133 0x02 0x00>;
+		};
+
+		cam_vdd_extldo: cam_vdd_extldo {
+			compatible = "mediatek,cam_vdd_extldo";
+			pinctrl-names = "extldodefault", "extldo_en_high", "extldo_en_low";
+			pinctrl-0 = <&ext_ldo_pins_default>;
+			pinctrl-1 = <&extldo_en_high>;
+			pinctrl-2 = <&extldo_en_low>;
+			status = "okay";
+		};
+
+		flashlights_ocp81375: flashlights_ocp81375 {
+			compatible = "mediatek,flashlights_ocp81375";
+			status = "okay";
+			ocp81375_regulator-supply = <&flashlight_gpio157>;
+		};
+
+		flashlight_gpio157: flashlight_gpio157 {
+			compatible = "regulator-fixed";
+			regulator-name = "flashlight_gpio157";
+			regulator-min-microvolt = <0x1b7740>;
+			regulator-max-microvolt = <0x1b7740>;
+			gpio = <&pio 0x9d 0x00>;
+			enable-active-high;
+		};
+	};
 };
