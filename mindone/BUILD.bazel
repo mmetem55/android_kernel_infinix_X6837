@@ -35,8 +35,8 @@ kernel_build(
     name = "mindone",
     srcs = ["//common:kernel_aarch64_sources"],
     outs = [
-        "arch/arm64/boot/dts/mediatek/mindone.dtb",
-        "arch/arm64/boot/dts/mediatek/mindone-overlay.dtbo",
+        "arch/arm64/boot/dts/mediatek/X6837.dtb",
+        "arch/arm64/boot/dts/mediatek/X6837-overlay.dtbo",
     ],
     arch = "arm64",
     base_kernel = "//common:kernel_aarch64",
@@ -47,8 +47,8 @@ kernel_build(
     pre_defconfig_fragments = ["mindone.fragment"],
     make_goals = [
         "modules",
-        "mediatek/mindone.dtb",
-        "mediatek/mindone-overlay.dtbo",
+        "mediatek/X6837.dtb",
+        "mediatek/X6837-overlay.dtbo",
     ],
     makefile = "//common:Makefile",
     module_outs = _MINDONE_IN_TREE_MODULES,
@@ -75,7 +75,7 @@ kernel_images(
 
 dtbo(
     name = "mindone_dtbo",
-    srcs = [":mindone/mindone-overlay.dtbo"],
+    srcs = [":mindone/X6837-overlay.dtbo"],
     kernel_build = ":mindone",
 )
 
