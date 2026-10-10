@@ -36,8 +36,8 @@ export ARCH=arm64 LLVM=1 LLVM_IAS=1 CROSS_COMPILE=aarch64-linux-gnu-
 # The timestamp comes from the commit being built, so it is a property of the
 # source rather than of when you happened to run make. Override SOURCE_DATE_EPOCH
 # if you are building something that is not a git checkout.
-export KBUILD_BUILD_USER="${KBUILD_BUILD_USER:-mindone}"
-export KBUILD_BUILD_HOST="${KBUILD_BUILD_HOST:-mindone}"
+export KBUILD_BUILD_USER="${KBUILD_BUILD_USER:-infinix}"
+export KBUILD_BUILD_HOST="${KBUILD_BUILD_HOST:-infinix}"
 if [ -z "${SOURCE_DATE_EPOCH:-}" ]; then
     SOURCE_DATE_EPOCH="$(git log -1 --format=%ct 2>/dev/null || echo 0)"
 fi
@@ -60,5 +60,5 @@ echo "== done =="
 echo "kernel.release  $REL   (expected: 6.12.92-4k+)"
 echo "module_layout   $ML"
 echo "Image           $OUT/arch/arm64/boot/Image"
-echo "DTB             $OUT/arch/arm64/boot/dts/mediatek/mindone.dtb"
+echo "DTB             $OUT/arch/arm64/boot/dts/mediatek/X6837.dtb"
 echo "Module.symvers  $OUT/Module.symvers   (ABI reference for building the modules against this kernel)"
