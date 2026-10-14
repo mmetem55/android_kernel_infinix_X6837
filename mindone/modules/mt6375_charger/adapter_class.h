@@ -1,0 +1,1 @@
+../adapter_class/adapter_class.h

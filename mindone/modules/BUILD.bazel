@@ -1947,6 +1947,87 @@ ddk_module(
 )
 
 ddk_module(
+    name = "fmradio_drv_mt6631_6635",
+    srcs = [
+        "fmradio/core/fm_cmd.c",
+        "fmradio/core/fm_config.c",
+        "fmradio/core/fm_eint.c",
+        "fmradio/core/fm_link.c",
+        "fmradio/core/fm_main.c",
+        "fmradio/core/fm_module.c",
+        "fmradio/core/fm_patch.c",
+        "fmradio/core/fm_rds_parser.c",
+        "fmradio/core/fm_reg_utils.c",
+        "fmradio/core/fm_utils.c",
+        "fmradio/chips/mt6631/pub/mt6631_fm_rds.c",
+        "fmradio/chips/mt6631/pub/mt6631_fm_lib.c",
+        "fmradio/chips/mt6631/pub/mt6631_op_fm_lib.c",
+        "fmradio/chips/mt6635/pub/mt6635_fm_rds.c",
+        "fmradio/chips/mt6635/pub/mt6635_fm_lib.c",
+        "fmradio/plat/legacy_wmt.c",
+        "fmradio/dummy.c",
+    ],
+    out = "fmradio_drv_mt6631_6635.ko",
+    hdrs = glob([
+        "fmradio/**/*.h",
+        "fmradio/**/.gitkeep",
+    ]),
+    kernel_build = "//common/mindone:mindone",
+    includes = [
+        "fmradio/inc",
+        "fmradio/plat/inc",
+        "fmradio/chips/mt6631/inc",
+        "fmradio/chips/mt6635/inc",
+        "adsp",
+        "include/drivers/misc/mediatek/include",
+        "include/drivers/misc/mediatek/include/mt-plat",
+        "include/drivers/misc/mediatek/connectivity/common/common_main/include",
+        "include/drivers/misc/mediatek/connectivity/common/common_main/linux/include",
+        "include",
+    ],
+    local_defines = [
+        "CONFIG_MTK_WCN_ARM64",
+        "MTK_WCN_WMT_STP_EXP_SYMBOL_ABSTRACT",
+        "WMT_IDC_SUPPORT=0",
+        "CFG_FM_CONNAC2=0",
+    ],
+    copts = _MINDONE_COPTS + [
+        "-include",
+        "mtk_sip_svc_ext.h",
+    ],
+    deps = [
+        ":mindone_headers",
+        ":wmt_drv",
+        ":adsp",
+    ],
+)
+
+ddk_module(
+    name = "ocp81375",
+    srcs = [
+        "flashlight-ocp81375/ocp81375.c",
+    ],
+    out = "ocp81375.ko",
+    hdrs = [
+        "flashlight-ocp81375/ocp81375.h",
+        "flashlight-ocp81375/flashlight-core.h",
+        "flashlight-ocp81375/flashlight-dt.h",
+        "flashlight-ocp81375/flashlight.h",
+    ],
+    kernel_build = "//common/mindone:mindone",
+    includes = [
+        ".",
+        "flashlight-ocp81375",
+        "include",
+    ],
+    copts = _MINDONE_COPTS,
+    deps = [
+        ":mindone_headers",
+        ":flashlight",
+    ],
+)
+
+ddk_module(
     name = "ged",
     srcs = [
         "ged/ged_debugFS.c",
@@ -2335,6 +2416,66 @@ ddk_module(
     ],
     copts = _MINDONE_COPTS,
     deps = [":mindone_headers"],
+)
+
+ddk_module(
+    name = "gt9886",
+    srcs = [
+        "gt9886/goodix_ts_i2c.c",
+        "gt9886/goodix_ts_core.c",
+        "gt9886/goodix_cfg_bin.c",
+        "gt9886/goodix_gtx8_update.c",
+        "gt9886/goodix_ts_tui.c",
+    ],
+    out = "gt9886.ko",
+    hdrs = glob([
+        "gt9886/**/*.h",
+        "gt9886/**/.gitkeep",
+    ]),
+    kernel_build = "//common/mindone:mindone",
+    includes = [
+        "gt9886",
+        "include",
+    ],
+    local_defines = [
+        "CONFIG_DRM_MEDIATEK=1",
+    ],
+    copts = _MINDONE_COPTS,
+    deps = [
+        ":mindone_headers",
+        ":mtk_disp_notify",
+        ":mtk_panel_ext",
+    ],
+)
+
+ddk_module(
+    name = "gt9896s",
+    srcs = [
+        "gt9896s/goodix_ts_spi.c",
+        "gt9896s/goodix_ts_core.c",
+        "gt9896s/goodix_cfg_bin.c",
+        "gt9896s/goodix_gtx8_update.c",
+        "gt9896s/goodix_ts_tui.c",
+    ],
+    out = "gt9896s.ko",
+    hdrs = glob([
+        "gt9896s/**/*.h",
+        "gt9896s/**/.gitkeep",
+    ]),
+    kernel_build = "//common/mindone:mindone",
+    includes = [
+        "gt9896s",
+        "include",
+    ],
+    local_defines = [
+        "CONFIG_DRM_MEDIATEK=1",
+    ],
+    copts = _MINDONE_COPTS,
+    deps = [
+        ":mindone_headers",
+        ":mtk_disp_notify",
+        ":mtk_panel_ext",
+    ],
 )
 
 ddk_module(
@@ -3680,6 +3821,85 @@ ddk_module(
         ":snd_soc_mt6366",
         ":snd_soc_mt6789_afe",
     ],
+)
+
+ddk_module(
+    name = "mt6375_adc",
+    srcs = [
+        "mt6375_adc/mt6375_adc.c",
+    ],
+    out = "mt6375_adc.ko",
+    hdrs = glob([
+        "mt6375_adc/mt6375_adc.h",
+    ]),
+    kernel_build = "//common/mindone:mindone",
+    includes = [
+        "mt6375_adc",
+        "include",
+    ],
+    copts = _MINDONE_COPTS,
+    deps = [":mindone_headers"],
+)
+
+ddk_module(
+    name = "mt6375_auxadc",
+    srcs = [
+        "mt6375_auxadc/mt6375_auxadc.c",
+    ],
+    out = "mt6375_auxadc.ko",
+    hdrs = glob([
+        "mt6375_auxadc/mt6375_auxadc.h",
+    ]),
+    kernel_build = "//common/mindone:mindone",
+    includes = [
+        "mt6375_auxadc",
+        "include",
+    ],
+    copts = _MINDONE_COPTS,
+    deps = [":mindone_headers"],
+)
+
+ddk_module(
+    name = "mt6375_charger",
+    srcs = [
+        "mt6375_charger/mt6375_charger.c",
+    ],
+    out = "mt6375_charger.ko",
+    hdrs = glob([
+        "mt6375_charger/adapter_class.h",
+        "mt6375_charger/charger_class.h",
+        "mt6375_charger/mtk_charger.h",
+        "mt6375_charger/mtk_charger_algorithm_class.h",
+        "mt6375_charger/mtk_smartcharging.h",
+    ]),
+    kernel_build = "//common/mindone:mindone",
+    includes = [
+        "mt6375_charger",
+        "include",
+    ],
+    copts = _MINDONE_COPTS,
+    deps = [
+        ":mindone_headers",
+        ":charger_class",
+    ],
+)
+
+ddk_module(
+    name = "mt6375_mfd",
+    srcs = [
+        "mt6375_mfd/mt6375.c",
+    ],
+    out = "mt6375_mfd.ko",
+    hdrs = glob([
+        "mt6375_mfd/mt6375.h",
+    ]),
+    kernel_build = "//common/mindone:mindone",
+    includes = [
+        "mt6375_mfd",
+        "include",
+    ],
+    copts = _MINDONE_COPTS,
+    deps = [":mindone_headers"],
 )
 
 ddk_module(
@@ -6631,6 +6851,29 @@ ddk_module(
     deps = [":mindone_headers"],
 )
 
+
+ddk_module(
+    name = "rt5133_regulator",
+    srcs = [
+        "rt5133_regulator/rt5133_regulator.c",
+    ],
+    out = "rt5133_regulator.ko",
+    hdrs = glob([
+        "rt5133_regulator/extdev_io_class.h",
+        "rt5133_regulator/**/.gitkeep",
+    ]),
+    kernel_build = "//common/mindone:mindone",
+    includes = [
+        "rt5133_regulator",
+        "include",
+    ],
+    copts = _MINDONE_COPTS,
+    deps = [
+        ":mindone_headers",
+        ":extdev_io_class",
+    ],
+)
+
 ddk_module(
     name = "rt_pd_manager",
     srcs = [
@@ -8213,6 +8456,7 @@ kernel_module_group(
         ":fhctl",
         ":flashlight",
         ":flashlights-dummy-gpio",
+        ":fmradio_drv_mt6631_6635",
         ":ged",
         ":gps_drv_stp",
         ":gps_pwr",
@@ -8222,6 +8466,8 @@ kernel_module_group(
         ":gz_log_mod",
         ":gz_main_mod",
         ":gz_trusty_mod",
+        ":gt9886",
+        ":gt9896s",
         ":gz_tz_system",
         ":gz_virtio_mod",
         ":hf_manager",
@@ -8264,6 +8510,10 @@ kernel_module_group(
         ":mt6577_auxadc",
         ":mt6789_dcm",
         ":mt6789_mt6366",
+        ":mt6375_adc",
+        ":mt6375_auxadc",
+        ":mt6375_charger",
+        ":mt6375_mfd",
         ":mtk-lpm-dbg-common-v1",
         ":mtk-lpm-dbg-mt6789",
         ":mtk-ssc-dbg-v2",
@@ -8359,6 +8609,7 @@ kernel_module_group(
         ":musb_main",
         ":nvmem_mt635x_efuse",
         ":nvmem_mtk_devinfo",
+        ":ocp81375",
         ":panel-sd5302h-fhd1240-dsi-vdo-amoled-ocp2133",
         ":panel_ch13721c_fhd_dsi_vdo_amoled_ocp2133",
         ":pd_dbg_info",
@@ -8376,6 +8627,7 @@ kernel_module_group(
         ":rpmb_mtk",
         ":rps_perf",
         ":rt4831a_drv",
+        ":rt5133_regulator",
         ":rt_pd_manager",
         ":rtc_mt6397",
         ":scp",

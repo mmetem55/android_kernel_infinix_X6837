@@ -1,0 +1,1 @@
+../extcon_mtk_usb/vendor-headers/drivers/power/supply/mtk_charger_algorithm_class.h
