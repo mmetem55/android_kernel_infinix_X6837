@@ -1,13 +1,6 @@
 // SPDX-License-Identifier: (GPL-2.0 OR MIT)
 /*
  * Infinix Hot 40 Pro (MediaTek MT6789 / Helio G99) device tree.
- *
- * Step 1 of bringing the device tree under source control: this is the stock device tree
- * blob decompiled verbatim (dtc -I dtb -O dts), taken from the stock vendor_boot. It builds
- * to a blob that must stay functionally identical to the stock one, which is what every
- * out-of-tree module in mindone/modules binds against (docs/dtb-required-compatibles.txt lists the
- * 91 compatible strings that must survive). Restructuring into labelled nodes and an SoC
- * .dtsi comes later, one verified step at a time.
  */
 /dts-v1/;
 
